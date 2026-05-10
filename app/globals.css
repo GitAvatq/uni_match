@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-dm-sans: "DM Sans", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-fraunces: "Fraunces", Georgia, ui-serif, serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-fraunces);
+  --color-background: #050c1c;
+  --color-foreground: #f8fafc;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: #050c1c; color: #f8fafc; font-family: var(--font-dm-sans), system-ui, sans-serif; }
+.font-display { font-family: var(--font-fraunces), Georgia, serif; }
+.luxury-gradient { background: radial-gradient(circle at top left, rgba(37,99,235,.35), transparent 34%), radial-gradient(circle at top right, rgba(245,158,11,.22), transparent 30%), #050c1c; }
+.glass { background: rgba(15, 23, 42, .68); border: 1px solid rgba(148, 163, 184, .18); box-shadow: 0 24px 80px rgba(0,0,0,.35); backdrop-filter: blur(18px); }
+.gold-text { color: #f59e0b; }
+.blue-glow { box-shadow: 0 0 50px rgba(37, 99, 235, .35); }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.float { animation: float 5s ease-in-out infinite; }
+@keyframes ring { from { stroke-dashoffset: 283; } }
+.animate-ring { animation: ring 1.2s ease-out both; }
