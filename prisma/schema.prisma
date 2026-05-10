@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String             @id @default(cuid())
+  name             String?
+  email            String             @unique
+  image            String?
+  plan             Plan               @default(FREE)
+  searchesThisMonth Int               @default(0)
+  searchMonth      String             @default("")
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  searches         Search[]
+  savedScholarships SavedScholarship[]
+}
+
+model Search {
+  id           String   @id @default(cuid())
+  userId       String
+  profileJson  Json
+  resultsJson  Json
+  createdAt    DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model SavedScholarship {
+  id              String   @id @default(cuid())
+  userId          String
+  scholarshipId   String
+  scholarshipJson Json
+  country         String
+  deadline        String
+  createdAt       DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, scholarshipId])
+  @@index([userId, country])
+}
+
+enum Plan {
+  FREE
+  PRO
+}

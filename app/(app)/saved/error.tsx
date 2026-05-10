@@ -1,0 +1,2 @@
+"use client";
+export default function Error({ reset }: { reset: () => void }) { return <div className="grid min-h-screen place-items-center bg-[#050C1C] p-6 text-white"><div className="glass max-w-lg rounded-3xl p-8 text-center"><h1 className="font-display text-4xl">Saved list unavailable</h1><button onClick={reset} className="mt-6 rounded-full bg-blue-600 px-5 py-3 font-bold">Try again</button></div></div>; }
