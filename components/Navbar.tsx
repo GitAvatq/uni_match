@@ -19,10 +19,10 @@ export async function Navbar() {
           <div className="flex items-center gap-3">
             <Link href="/search" className="rounded-full bg-blue-600 px-4 py-2 text-sm font-bold hover:bg-blue-500">Search</Link>
             <div className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/10 text-sm font-bold" title={user.email}>{user.name.slice(0, 1)}</div>
-            <a href="/api/auth/signout" className="hidden text-sm text-slate-400 hover:text-white sm:block">Sign out</a>
+            <Link href="/api/auth/signout" className="hidden text-sm text-slate-400 hover:text-white sm:block">Sign out</Link>
           </div>
         ) : (
-          <a href="/api/auth/signin" className="rounded-full border border-white/15 px-4 py-2 text-sm font-bold hover:bg-white/10">Sign In</a>
+          <Link href="/api/auth/signin" className="rounded-full border border-white/15 px-4 py-2 text-sm font-bold hover:bg-white/10">Sign In</Link>
         )}
       </nav>
     </header>
